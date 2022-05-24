@@ -1,11 +1,12 @@
-
-
-var two = new Two({
-  type: Two.Types.svg,
+const main = document.getElementById('main');
+const two = new Two({
+  type: Two.Types.canvas,
   fullscreen: true,
   autostart: true
 }).appendTo(document.body);
 
+
+function disegnare(){
 // The cursor, matched with your mouse
 var mouse = new Two.Vector();
 mouse.radius = 4;
@@ -47,8 +48,8 @@ interaction.add(controls);
 
 // A list of all the editable anchor points
 var points = new Two.Points();
-points.size = 4;
-points.stroke = '#00AEFF';
+points.size = 8;
+points.stroke = '#2A0DDF';
 interaction.add(points, mouse.selected);
 
 var path; // Used to reference the currently selected path
@@ -321,4 +322,5 @@ function mouseup() {
   selection.closed = false;
   controls.visible = false;
 
+}
 }

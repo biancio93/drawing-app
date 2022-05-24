@@ -1,0 +1,83 @@
+/* ===================================
+GENERAL STYLE
+=================================== */
+
+button {
+    background-color: transparent;
+}
+
+/* ===================================
+MENU
+=================================== */
+.container-menu {
+    background-color: white;
+    height: 60vh;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 2vw;
+    position: absolute;
+    top: 20vh;
+    border-radius: 100px;
+    padding: 25px 2vh;
+    box-sizing: border-box;
+}
+
+.background-canva {
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f7f5;
+}
+
+.left-menu-top,
+.left-menu-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================================
+ELEMENTI - PULSANTI
+=================================== */
+
+.std-button {
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    border: 2px solid #0B004E;
+}
+.std-button i{
+    color: #0B004E;
+}
+.std-button:hover {
+    transition: 0.4s ease;
+    border: 2px solid #0B004E;
+    background-color: #0B004E;
+}
+.std-button:hover i{
+    transition: 0.4s ease;
+    color: white;
+}
+.save-button{
+    background-color: #0B004E;
+}
+.std-button.save-button i, .save-button i{
+    color: white;
+}
+
+.left-menu-top .std-button {
+    margin-bottom: 10px;
+}
+.left-menu-top .std-button:last-of-type {
+    margin-bottom: 0px;
+}
+
+.left-menu-bottom .std-button {
+    margin-top: 10px;
+}
+.left-menu-bottom .std-button:last-of-type {
+    margin-top: 0px;
+}

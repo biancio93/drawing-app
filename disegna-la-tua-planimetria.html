@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
 
-        <script src="js/two.js"></script>
-        <script src="js/app.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
+    <link href="fontawesome/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container-menu">
+        <div class="left-menu-top">
+            <button class="std-button" onclick="disegnare()"><i class="fa-solid fa-pen"></i></button>
+            <button class="std-button"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+        </div>
+        <div class="left-menu-bottom">
+            <button class="std-button save-button"><i class="fa-solid fa-floppy-disk"></i></button>
+        </div>
+    </div>
+
+    <div id="main" class="background-canva"></div>
+
+    <script src="js/two.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
 </html>
