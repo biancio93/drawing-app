@@ -7,12 +7,31 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Madurai&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" rel="stylesheet">
     <link href="fontawesome/css/all.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
 </head>
 
-<body>
+<body id="page">
+
+    <div class="container-form">
+        <div class="form-content">
+            <h2>Salva la tua planimetria</h2>
+            <p>Inserisci il nome del file (es.:Planimetria Mario Rossi)</p>
+            <input type="text" id="fname" name="fname">
+            <button id="btn" class="form-save-button"><i class="fa-solid fa-floppy-disk hide-icon"></i>
+                <p>SALVA</p>
+            </button>
+        </div>
+    </div>
 
     <div class="container-menu">
         <div class="left-menu-top">

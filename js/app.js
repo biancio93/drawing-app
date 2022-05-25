@@ -42,14 +42,14 @@ controls.line = new Two.Path([
 controls.left.translation.bind(Two.Events.Types.change, updateControlHandles);
 controls.right.translation.bind(Two.Events.Types.change, updateControlHandles);
 controls.add(controls.line, controls.left, controls.right);
-controls.stroke = '#FF00AE';
+controls.stroke = '#5AC6D2';
 controls.anchor = null;
 interaction.add(controls);
 
 // A list of all the editable anchor points
 var points = new Two.Points();
 points.size = 8;
-points.stroke = '#2A0DDF';
+points.stroke = '#0B004E';
 interaction.add(points, mouse.selected);
 
 var path; // Used to reference the currently selected path
@@ -324,3 +324,23 @@ function mouseup() {
 
 }
 }
+
+// PULSANTE SALVA
+
+let btn = document.getElementById('btn');
+let page = document.getElementById('page');
+
+btn.addEventListener('click', function(){
+  html2PDF(page, {
+    jsPDF: {
+      format: 'a4',
+      orientation: "landscape",
+    },
+    imageType: 'image/jpeg',
+    output: './pdf/generate.pdf'
+  });
+});
+
+
+
+

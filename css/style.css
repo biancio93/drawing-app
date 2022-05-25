@@ -2,8 +2,23 @@
 GENERAL STYLE
 =================================== */
 
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Hind Madurai', sans-serif;
+}
+
+p, *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+p{
+    margin:0;
+}
+
 button {
     background-color: transparent;
+}
+*{
+    box-sizing: border-box;
 }
 
 /* ===================================
@@ -80,4 +95,65 @@ ELEMENTI - PULSANTI
 }
 .left-menu-bottom .std-button:last-of-type {
     margin-top: 0px;
+}
+
+/* ===================================
+FORM DI SALVATAGGIO
+=================================== */
+
+.container-form{
+    z-index: 99999;
+    position: absolute;
+    top: 0vh;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000085;
+}
+.form-content{
+    background-color: white;
+    padding: 5%;
+    border-radius: 5px;
+    text-align: center;
+}
+.form-content input{
+    background-color: #F8F7F5;
+    border: 1px solid #F8F7F5;
+    padding: 10px 10px;
+    color: #4e4e4e;
+    transition: 0.4s ease;
+    width:100%;
+}
+.form-content input:hover{
+    border-bottom: 1px solid #0B004E;
+}
+.form-save-button {
+    background-color: #0B004E;
+    color: white;
+    padding: 10px 20px 10px 0px;
+    display: flex;
+    margin: 15px auto 0 auto;
+    align-items: center;
+    border: 0;
+    transition: 0.4s ease;
+}
+.form-save-button:hover {
+    padding: 10px 20px 10px 20px;
+    transition: 0.4s ease;
+}
+.hide-icon{
+    transition:0.4s ease;
+    transform: translateX(30px);
+    opacity: 0;
+    margin-right:5px;
+}
+.form-save-button:hover .hide-icon{
+    transition:0.4s ease;
+    transform: translateX(0px);
+    opacity: 1;
 }
