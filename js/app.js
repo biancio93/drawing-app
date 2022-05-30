@@ -81,8 +81,9 @@ domElement.addEventListener('mousemove', mousemove, false);
     console.log( posYperc);
     let posY = posYperc + '%';
     let posX = posXperc + '%';
-    let posSizeY = 'top:' + posY + ';';
-    let posSizeX = 'left:' + posX  + ';';
+    let posSizeY = 'top: calc(' + posY + ' - 21px);';
+    let posSizeX = 'left: calc(' + posX  + ' - 50px);';
+    console.log(posSizeX);
     size.style.cssText = posSizeX + posSizeY;
   }
 
@@ -136,7 +137,7 @@ function close_open(x, y) {
   let pathLength = path['vertices'].length - 2;
   console.log(pathLength);
   for (i=0; i < pathLength; i++){
-    let previousAnchor = i;
+    let previousAnchor = i + 1;
     let textareaX = (path['vertices'][i]['x'] + path['vertices'][previousAnchor]['x'])/2;
     let textareaY = (path['vertices'][i]['y'] + path['vertices'][previousAnchor]['y'])/2;
     create_textarea(path,textareaX,textareaY);
@@ -412,7 +413,7 @@ projectName.addEventListener("keyup", function (e) {
 // save the document
 btn.addEventListener('submit', function(){
   let projectNameValue = document.getElementById('pname').value;
-  html2PDF(project, {
+  html2PDF(page, {
     jsPDF: {
       format: 'a4',
       orientation: "landscape",
