@@ -2,22 +2,29 @@
 GENERAL STYLE
 =================================== */
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Hind Madurai', sans-serif;
 }
 
-p, *{
+p,
+* {
     font-family: 'Open Sans', sans-serif;
 }
 
-p{
-    margin:0;
+p {
+    margin: 0;
 }
 
 button {
     background-color: transparent;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
 
@@ -44,6 +51,9 @@ MENU
     height: 100vh;
     width: 100vw;
     background-color: #f8f7f5;
+    background-image: url(http://envisrl.com/wp-content/uploads/2022/05/cross-pattern.svg);
+    background-repeat: repeat;
+    background-size:2.5vw 2.5vw;
 }
 
 .left-menu-top,
@@ -64,28 +74,35 @@ ELEMENTI - PULSANTI
     transition: 0.4s ease;
     border: 2px solid #0B004E;
 }
-.std-button i{
+
+.std-button i {
     color: #0B004E;
 }
+
 .std-button:hover {
     transition: 0.4s ease;
     border: 2px solid #0B004E;
     background-color: #0B004E;
 }
-.std-button:hover i{
+
+.std-button:hover i {
     transition: 0.4s ease;
     color: white;
 }
-.save-button{
+
+.save-button {
     background-color: #0B004E;
 }
-.std-button.save-button i, .save-button i{
+
+.std-button.save-button i,
+.save-button i {
     color: white;
 }
 
 .left-menu-top .std-button {
     margin-bottom: 10px;
 }
+
 .left-menu-top .std-button:last-of-type {
     margin-bottom: 0px;
 }
@@ -93,6 +110,7 @@ ELEMENTI - PULSANTI
 .left-menu-bottom .std-button {
     margin-top: 10px;
 }
+
 .left-menu-bottom .std-button:last-of-type {
     margin-top: 0px;
 }
@@ -101,7 +119,22 @@ ELEMENTI - PULSANTI
 FORM DI SALVATAGGIO
 =================================== */
 
-.container-form{
+
+
+.container-form.closing-form {
+    transition-delay: 0.2s;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    border-radius: 50%;
+    transition: 0.6s ease;
+}
+
+.container-form {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: inherit;
+    border-radius: 0;
     z-index: 99999;
     position: absolute;
     top: 0vh;
@@ -114,46 +147,125 @@ FORM DI SALVATAGGIO
     justify-content: center;
     align-items: center;
     background-color: #00000085;
+    transition: 0.6s ease;
 }
-.form-content{
+
+.closing-form .form-content{
     background-color: white;
     padding: 5%;
     border-radius: 5px;
     text-align: center;
+    position: relative;
+    opacity: 0;
+    transition:0.4s ease;
+    transform: translateY(-70vh);
 }
-.form-content input{
+.form-content {
+    background-color: white;
+    padding: 5%;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    transition:0.4s ease;
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+  
+
+.form-content input {
     background-color: #F8F7F5;
     border: 1px solid #F8F7F5;
     padding: 10px 10px;
     color: #4e4e4e;
     transition: 0.4s ease;
-    width:100%;
+    width: 100%;
 }
-.form-content input:hover{
+
+.form-content input:hover {
     border-bottom: 1px solid #0B004E;
 }
-.form-save-button {
+
+input.form-save-button {
     background-color: #0B004E;
     color: white;
-    padding: 10px 20px 10px 0px;
+    padding: 10px 20px 10px 20px;
     display: flex;
     margin: 15px auto 0 auto;
     align-items: center;
     border: 0;
     transition: 0.4s ease;
+    width: auto;
+    cursor: pointer;
 }
-.form-save-button:hover {
-    padding: 10px 20px 10px 20px;
+
+input.form-save-button:hover {
+    padding: 10px 20px 10px 34px;
     transition: 0.4s ease;
+    border-bottom: 1px solid #0B004E;
 }
-.hide-icon{
-    transition:0.4s ease;
+
+.save-form {
+    position: relative;
+}
+
+.hide-icon {
+    transition: 0.4s ease;
     transform: translateX(30px);
     opacity: 0;
-    margin-right:5px;
+    margin-right: 5px;
+    position: absolute;
+    bottom: 0;
+    color: white;
 }
-.form-save-button:hover .hide-icon{
-    transition:0.4s ease;
-    transform: translateX(0px);
+
+.icon-container {
+    position: absolute;
+    bottom: 10px;
+    transform: translateX(0);
+    color: white;
+    opacity: 0;
+    transition: 0.4s ease;
+    pointer-events: none;
+}
+
+.icon-hover-state.icon-container {
+    transition: 0.4s ease;
+    transform: translateX(-32px);
     opacity: 1;
+    transition: 0.4s ease;
+}
+
+.disable-btn {
+    pointer-events: none;
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 0;
+    opacity: 0.5;
+    transition: 0.4s ease;
+}
+
+.close-btn:hover {
+    opacity: 1;
+    transition: 0.4s ease;
+}
+
+/* ===================================
+FORM DI SALVATAGGIO
+=================================== */
+
+.input-size{
+    z-index: 9999;
+    position: absolute;
+    max-width: 100px;
+    padding: 10px;
 }

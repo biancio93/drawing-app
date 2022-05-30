@@ -59,6 +59,33 @@ domElement.addEventListener('mousedown', mousedown, false);
 domElement.addEventListener('dblclick', doubleclick, false);
 domElement.addEventListener('mousemove', mousemove, false);
 
+  function create_textarea(path,textareaX,textareaY){
+    /* var size = 50;
+    var shape = new Two.Text('inserisci misura',textareaX, textareaY);
+    shape.noStroke().fill = '#ccc';
+    content.add(shape);
+    console.log(shape);
+    shape.addEventListener("click", function() {
+      console.log('si può fare');
+    }); */
+    
+    let size = document.createElement("input");
+    size.classList.add('input-size');
+    console.log(size.style);
+    document.body.appendChild(size);
+    //size.style.bottom = textareaY + 'px';
+    let project = document.querySelector("canvas");
+    console.log(project.width);
+    let posYperc = (textareaY * 100/project.height);
+    let posXperc = (textareaX * 100/project.width);
+    console.log( posYperc);
+    let posY = posYperc + '%';
+    let posX = posXperc + '%';
+    let posSizeY = 'top:' + posY + ';';
+    let posSizeX = 'left:' + posX  + ';';
+    size.style.cssText = posSizeX + posSizeY;
+  }
+
 function create() {
 
   path = new Two.Path();
@@ -70,7 +97,6 @@ function create() {
   selection.vertices = path.vertices;
 
   content.add(path);
-
 }
 
 function add(x, y) {
@@ -82,7 +108,6 @@ function add(x, y) {
   controls.anchor = anchor;
   controls.left.translation.copy(anchor);
   controls.right.translation.copy(anchor);
-
   return anchor;
 
 }
@@ -98,6 +123,24 @@ function close(x, y) {
 
   controls.anchor = null;
   path.closed = true;
+  deselect();
+
+  path = null;
+
+}
+function close_open(x, y) {
+
+  controls.anchor = null;
+  path.closed = false;
+  //console.log(path['vertices']['0']['y']);
+  let pathLength = path['vertices'].length - 2;
+  console.log(pathLength);
+  for (i=0; i < pathLength; i++){
+    let previousAnchor = i;
+    let textareaX = (path['vertices'][i]['x'] + path['vertices'][previousAnchor]['x'])/2;
+    let textareaY = (path['vertices'][i]['y'] + path['vertices'][previousAnchor]['y'])/2;
+    create_textarea(path,textareaX,textareaY);
+  }
   deselect();
 
   path = null;
@@ -141,13 +184,6 @@ function mousedown(e) {
 
   if (mouse.intersection) {
     mouse.dragging = true;
-    if (mouse.intersection.id === 0) {
-      // Hack to emulate closing, but actually using
-      // one last point to simulate the left control handle
-      // of the first point.
-      var spoof = path.vertices[0];
-      add(spoof.x, spoof.y);
-    }
   } else {
     if (!path) {
       create();
@@ -163,13 +199,14 @@ function mousedown(e) {
 
 }
 
-function doubleclick() {
+function doubleclick(doneInput) {
 
   if (!path) {
     return;
   }
 
   var first = path.vertices[0];
+  
 
   if (!first.controls.left.isZero() || !first.controls.right.isZero()) {
     // Hack to emulate closing, but actually using
@@ -179,7 +216,8 @@ function doubleclick() {
     last.controls.left.copy(first.controls.left);
   }
 
-  close();
+  deselect();
+  close_open();
 
 }
 
@@ -227,7 +265,7 @@ function drag(e) {
 
   // Like mousemove, but on the window and only occuring when
   // we've called `mousedown` effectively creating a drag event
-
+ 
   if (mouse.dragging) {
 
     if (controls.anchor) {
@@ -325,22 +363,62 @@ function mouseup() {
 }
 }
 
+// FORM DI SALVATAGGIO
+let containerForm = document.getElementById('cont-form');
+let containerTrigger = document.getElementById('container-trigger');
+let containerTriggerClosing = document.getElementById('container-closing-trigger');
+
+containerTrigger.onclick = function() {open_container()};
+containerTriggerClosing.onclick = function() {open_container_closing()};
+
+function open_container() {
+  containerForm.classList.toggle("closing-form");
+}
+function open_container_closing() {
+  containerForm.classList.toggle("closing-form");
+}
+
 // PULSANTE SALVA
 
 let btn = document.getElementById('btn');
 let page = document.getElementById('page');
+let saveBtn = document.getElementById('save-btn');
+let iconSave = document.getElementById('icon-save');
+let projectName = document.getElementById('pname');
 
-btn.addEventListener('click', function(){
-  html2PDF(page, {
+
+saveBtn.addEventListener('mouseover',hoverIconadd);
+saveBtn.addEventListener('mouseout',hoverIconremove);
+
+// hover effect
+function hoverIconadd(){
+  iconSave.classList.add('icon-hover-state');
+}
+function hoverIconremove(){
+  iconSave.classList.remove('icon-hover-state');
+}
+
+// check if field value is empty or not
+
+projectName.addEventListener("keyup", function (e) {
+  const inputText = e.target.value;
+  if (inputText.length > 0){
+    saveBtn.classList.remove('disable-btn');
+  }else{
+    saveBtn.classList.add('disable-btn');
+  }
+});
+
+// save the document
+btn.addEventListener('submit', function(){
+  let projectNameValue = document.getElementById('pname').value;
+  html2PDF(project, {
     jsPDF: {
       format: 'a4',
       orientation: "landscape",
     },
     imageType: 'image/jpeg',
-    output: './pdf/generate.pdf'
+    output: projectNameValue
   });
 });
-
-
-
 

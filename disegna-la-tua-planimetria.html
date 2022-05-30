@@ -22,14 +22,17 @@
 
 <body id="page">
 
-    <div class="container-form">
+    <div id="cont-form" class="container-form closing-form">
         <div class="form-content">
+            <button id="container-closing-trigger" class="close-btn"><i class="fa-solid fa-x"></i></button>
             <h2>Salva la tua planimetria</h2>
-            <p>Inserisci il nome del file (es.:Planimetria Mario Rossi)</p>
-            <input type="text" id="fname" name="fname">
-            <button id="btn" class="form-save-button"><i class="fa-solid fa-floppy-disk hide-icon"></i>
-                <p>SALVA</p>
-            </button>
+            <p style="margin-bottom:15px;">Inserisci il nome del file (es.:Planimetria Mario Rossi)</p>
+            <form id="btn" class="save-form" onsubmit="return false">
+            <input type="text" id="pname" name="pname"  required>
+            <input id="save-btn" type="submit" class="form-save-button disable-btn" value="salva">
+            <span id="icon-save" class="icon-container"><i class="fa-solid fa-floppy-disk"></i></span>
+        </form>
+            
         </div>
     </div>
 
@@ -39,7 +42,7 @@
             <button class="std-button"><i class="fa-solid fa-arrow-rotate-left"></i></button>
         </div>
         <div class="left-menu-bottom">
-            <button class="std-button save-button"><i class="fa-solid fa-floppy-disk"></i></button>
+            <button id="container-trigger" class="std-button save-button"><i class="fa-solid fa-floppy-disk"></i></button>
         </div>
     </div>
 
